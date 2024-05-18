@@ -1,0 +1,478 @@
+
+ 
+  @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  display: flex;
+  align-content: center;
+  
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  color: #444;
+  background-color: #f3f3f3;
+  height: 97vh;
+  padding: 2rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  /* border: 2px solid black; */
+  box-sizing: border-box;
+  height: 70px;
+  margin: 5px,inherit;
+}
+
+.welcome {
+  font-size: 1.9rem;
+  font-weight: 500;
+} 
+
+.logo {
+  position: relative;
+  height: 5.25rem;
+  right: 250px;
+  transition: all 0.3s;
+}
+.logo:hover{
+  transform: translateY(1px);
+  height: 5.35rem;
+  
+}
+
+.login {
+  display: flex;
+}
+
+.login__input {
+  border: none;
+  padding: 0.5rem 2rem;
+  font-size: 1.6rem;
+  font-family: inherit;
+  text-align: center;
+  width: 12rem;
+  border-radius: 10rem;
+  margin-right: 1rem;
+  color: inherit;
+  border: 1px solid #fff;
+  transition: all 0.3s;
+}
+
+.login__input:focus {
+  outline: none;
+  border: 1px solid #ccc;
+}
+
+.login__input::placeholder {
+  color: #bbb;
+}
+
+.login__btn {
+  border: none;
+  background: none;
+  font-size: 2.2rem;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.login__btn:hover,
+.login__btn:focus,
+.btn--sort:hover,
+.btn--sort:focus {
+  outline: none;
+  color: #777;
+}
+
+/* MAIN */
+.app {
+  position: relative;
+  max-width: 100rem;
+  margin: 1rem auto;
+  display: grid;
+  grid-template-columns: 4fr 3fr;
+  grid-template-rows: auto repeat(3, 15rem) auto;
+  gap: 2rem;
+
+  /* NOTE This creates the fade in/out anumation */
+  opacity: 0;
+  transition: all 1s;
+}
+
+.balance {
+  grid-column: 1 / span 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 0rem;
+}
+
+.balance__label {
+  font-size: 2.2rem;
+  font-weight: 500;
+  margin-bottom: -0.2rem;
+}
+
+.balance__date {
+  font-size: 1.4rem;
+  color: #888;
+}
+
+.balance__value {
+  font-size: 4.5rem;
+  font-weight: 400;
+}
+
+/* MOVEMENTS */
+.movements {
+  grid-row: 2 / span 3;
+  background-color: #fff;
+  border-radius: 1rem;
+  overflow: scroll;
+}
+
+.movements__row {
+  padding: 2.25rem 4rem;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.movements__type {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #fff;
+  padding: 0.1rem 1rem;
+  border-radius: 10rem;
+  margin-right: 2rem;
+}
+
+.movements__date {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #666;
+}
+
+.movements__type--deposit {
+  background-image: linear-gradient(to top left, #39b385, #9be15d);
+}
+
+.movements__type--withdrawal {
+  background-image: linear-gradient(to top left, #df4a6f, #ff585f);
+}
+
+.movements__value {
+  font-size: 1.7rem;
+  margin-left: auto;
+}
+
+/* SUMMARY */
+.summary {
+  grid-row: 5 / 6;
+  display: flex;
+  align-items: baseline;
+  padding: 0 0.3rem;
+  margin-top: 1rem;
+}
+
+.summary__label {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-right: 0.8rem;
+}
+
+.summary__value {
+  font-size: 2.2rem;
+  margin-right: 2.5rem;
+}
+
+.summary__value--in,
+.summary__value--interest {
+  color: #7ccf87;
+}
+
+.summary__value--out {
+  color: #e36777;
+}
+
+.btn--sort {
+  margin-left: auto;
+  border: none;
+  background: none;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* OPERATIONS */
+.operation {
+  border-radius: 1rem;
+  padding: 3rem 4rem;
+  color: #333;
+  margin-left: 10px;
+}
+
+.operation--transfer {
+  background-image: linear-gradient(to top left, #ecd197, #d7c57c);
+}
+
+.operation--loan {
+  background-image: linear-gradient(to top left, #b78dcf, #766acc);
+}
+
+.operation--close {
+  background-image: linear-gradient(to top left, #e2597b, #ff676e);
+}
+
+h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 2.5fr 2.5fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0.4rem 1rem;
+}
+
+/* Exceptions for interst */
+.form.form--loan {
+  grid-template-columns: 2.5fr 1fr 2.5fr;
+}
+.form__label--loan {
+  grid-row: 2;
+}
+/* End exceptions */
+
+.form__input {
+  width: 100%;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.4);
+  font-family: inherit;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #333;
+  padding: 0.3rem 1rem;
+  border-radius: 0.7rem;
+  transition: all 0.3s;
+  
+}
+
+.form__input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.form__label {
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.form__btn {
+  border: none;
+  border-radius: 0.7rem;
+  font-size: 1.8rem;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.form__btn:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.logout-timer {
+  padding: 0 0.3rem;
+  margin-top: 1.9rem;
+  text-align: right;
+  font-size: 1.25rem;
+  position: absolute;
+  left: 80%;
+  top: 92%;
+}
+
+.timer {
+  font-weight: 600;
+}
+
+footer{
+  width: 100vw;
+  text-align: center;
+  color: black;
+  box-sizing: border-box;
+  font-size: 0.7vw;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.create-account{
+  border: none;
+  position: relative;
+  /* border: 2px solid black; */
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+  padding: 10px;
+  margin-left: 200px;
+  font-size: 1.9rem;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 25px;
+  transition: background 0.5s;
+  right: 320px;
+}
+.create-account:hover {
+  background-color: #dce2e0a8;
+  box-shadow: 0px 15px 20px rgba(223, 230, 227, 0.4);
+  font-weight: 600;
+}
+.slash{
+  position: relative;
+  font-size: 2.5rem;
+  right: 150px;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(109, 105, 105, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 5;
+  transition: all 0.3s ease-in-out;
+}
+
+.create-account-form{
+  margin-top: 45px;
+ /* border: 2px solid black;   */
+ height: 90%;
+ border-radius: inherit ;
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: center;
+ width: 100%;
+ align-items: center;
+ position: relative;
+ bottom: 25px;
+}  
+.create-account-form input{
+  margin: 1px;
+  width: 50%;
+  height: 40px;
+  text-align: center;
+  border-radius: 30px;
+  font-size: 1.9rem;
+  background-color: transparent;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  border-bottom: 2px solid #333;
+  outline: none;
+}
+.create-account-form input:focus{
+  background-color: #d7d6e2;
+}
+.create-account-form input[type="text"]{
+  width: 45%;
+}
+.create-account-form input[type="submit"]:hover{
+  transform: translateY(3px);
+  box-shadow: 0.5px 0.5px 15px #333;
+  
+}
+.create-account-form input[type="submit"]{
+  color: #f3f3f3;
+  background-color: #333;
+  transition: all 0.1s;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+.modal-window{
+  height: 50vh;
+  /* border: 2px solid black; */
+  width: 40vw;
+  /* margin: 100px; */
+  background-color: #f3f3f3;
+  position: absolute;
+  top: 200px;
+  text-align: center;
+  box-shadow: 2px 2px 10px black;
+  border-radius: 10px;
+  z-index: 10;
+  left: 30%;
+  transition: opacity 0.4s ease-in-out;
+}
+.log-out{
+  /* border: 2px solid black; */
+  border-radius: 2rem;
+  color: black;
+  margin-left: 10px;
+  width: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.9rem;
+  background-image: linear-gradient(to top left, #e3e8d6, #7f8585);
+  transition: all 0.1s;
+}
+.log-out:hover{
+  font-weight: bold;
+  cursor: pointer;
+}
+#user-name{
+  width: 50%;
+}
+.overlay.hidden{
+  /* margin-top: 60vh; */
+  height: 0;
+  width: 0;
+  opacity: 0%;
+}
+.modal-window.hidden{
+  margin-top: 60vh;
+  height: 0;
+  width: 0;
+  opacity: 0%;
+}
+
+.close-btn{
+display: inline;
+position: relative;
+padding: 0px;
+box-sizing: border-box;
+font-size: 4.2rem;
+left: 285px;
+cursor: default;
+}
+
+.close-btn:hover{
+  font-weight: bold;
+}
